@@ -1,10 +1,11 @@
 FROM nginx:alpine
 
-# Install Python 3 and pip
-RUN apk add --no-cache python3 py3-pip
-
-# Install Python dependencies for VC verification
-RUN pip3 install --no-cache-dir requests cryptography
+# Install Python 3 and VC verification dependencies via apk
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    py3-requests \
+    py3-cryptography
 
 # Clean default assets
 RUN rm -rf /usr/share/nginx/html/*
