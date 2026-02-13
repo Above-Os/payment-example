@@ -37,7 +37,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
-          tags: payment-demo:${{ github.event.inputs.tags || steps.get-latest-tag.outputs.tag }}
+          tags: beclab/payment-demo:${{ github.event.inputs.tags || steps.get-latest-tag.outputs.tag }}
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
